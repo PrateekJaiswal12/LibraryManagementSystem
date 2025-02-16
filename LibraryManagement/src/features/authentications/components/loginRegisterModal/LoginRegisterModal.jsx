@@ -25,12 +25,14 @@ const LoginRegisterModal = () => {
 
     useEffect(() => {
         if(authState.loggedInUser) {
-            closeModal();
+          closeModal();
         }
 
         return (() => {
-            localStorage.setItem('user', authState.loggedInUser);
-        });
+          if(authState.loggedInUser) {
+            localStorage.setItem('userId', authState.loggedInUser._id);
+          }
+        })
 
     }, [authState.loggedInUser])
 

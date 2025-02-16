@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt';
-import  { User }  from '../daos/userDaos.js';
+import  { User }  from '../models/UserModel.js';
 
 export async function registerUser(user) {
 

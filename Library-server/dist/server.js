@@ -5,10 +5,12 @@ import { configDotenv } from 'dotenv';
 
 import { config } from '../src/configs/index.js';
 import authRoutes from '../src/routes/AuthRoutes.js';
-import userRoutes from "../src/routes/UserRoutes.js"
+import userRoutes from "../src/routes/UserRoutes.js";
+import bookRoutes from "../src/routes/BookRoutes.js";
+import cardRoutes from "../src/routes/LibraryCardRoutes.js";
+import loanRoutes from "../src/routes/LoanRecordRoutes.js";
 
 configDotenv();
-
 const app = express();
 const PORT = config.server.port;
 
@@ -41,6 +43,11 @@ dbconnection()
 // Routes
 app.use('/auth', authRoutes);
 app.use('/users', userRoutes);
+app.use("/book", bookRoutes);
+app.use("/card", cardRoutes);
+app.use("/loan", loanRoutes);
+
+
 
 app.get('/', (req, res) => {
   res.status(200).json('Server is running fine');

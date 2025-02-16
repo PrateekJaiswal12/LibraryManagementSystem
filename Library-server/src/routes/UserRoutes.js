@@ -1,6 +1,6 @@
 import express from 'express'
 import {  getAllUsers, getUserById, updateUser, deleteUser  } from "../controllers/UserControllers.js"
-import { Schemas, validateUserSchema } from '../middlewares/validation.js';
+import { Schemas, validateSchema } from '../middlewares/validation.js';
 
 const router = express.Router();
 
@@ -12,18 +12,18 @@ router.get(
 
 router.get(
     "/:userId", 
-    validateUserSchema(Schemas.user.userId, 'params'),  
+    validateSchema(Schemas.user.userId, 'params'),  
     getUserById
 );
 
 router.put(
     "/",
-    validateUserSchema(Schemas.user.update, 'body'), 
+    validateSchema(Schemas.user.update, 'body'), 
     updateUser
 );
 router.delete(
     "/:userId", 
-    validateUserSchema(Schemas.user.userId, 'params'), 
+    validateSchema(Schemas.user.userId, 'params'), 
     deleteUser
 );
 
